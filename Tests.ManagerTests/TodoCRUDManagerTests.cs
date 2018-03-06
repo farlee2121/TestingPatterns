@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DeepEqual.Syntax;
 using Managers.LazyCollectionOfAllManagers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shared.DatabaseContext;
@@ -77,6 +78,11 @@ namespace Tests.ManagerTests
                     Assert.AreEqual(expectedTodo.IsActive, actualTodo.IsActive);
                     Assert.AreEqual(expectedTodo.IsComplete, actualTodo.IsComplete);
                 }
+
+                db.TodoItems.RemoveRange(expectedItemList);
+                db.TodoLists.Remove(expectedList);
+                db.Users.Remove(user);
+                db.SaveChanges();
             }
 
         }
@@ -85,25 +91,15 @@ namespace Tests.ManagerTests
         public void GetTodoItems_Final()
         {
             // arrange
-           
+            TodoList todoList = dataPrep.TodoLists.Create();
+            int expectedItemCount = 5;
+            IEnumerable<TodoItem> expectedItemList = dataPrep.TodoItems.CreateManyForList(expectedItemCount, todoList);
 
+            // act
+            IEnumerable<TodoItem> actualItemList = manager.GetTodoItems(todoList.Id);
 
-
-            //// act
-            //IEnumerable<TodoItem> actualItemList = manager.GetTodoItems(expectedList.Id);
-
-            ////assert
-
-            //Assert.AreEqual(expectedItemList.Count, actualItemList.Count());
-            //foreach (TodoItem actualTodo in actualItemList)
-            //{
-            //    TodoItemDBO expectedTodo = expectedItemList.FirstOrDefault(ti => ti.Id == actualTodo.Id);
-            //    Assert.AreEqual(expectedTodo.Description, actualTodo.Description);
-            //    Assert.AreEqual(expectedTodo.IsActive, actualTodo.IsActive);
-            //    Assert.AreEqual(expectedTodo.IsComplete, actualTodo.IsComplete);
-            //}
-            
-
+            //assert
+            expectedItemList.ShouldDeepEqual(actualItemList);
         }
     }
 }
