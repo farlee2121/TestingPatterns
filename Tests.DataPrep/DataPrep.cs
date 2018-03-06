@@ -10,7 +10,7 @@ namespace Tests.DataPrep
     {
         public TodoDataPrep(bool shouldPersistData)
         {
-
+            
         }
     }
 }

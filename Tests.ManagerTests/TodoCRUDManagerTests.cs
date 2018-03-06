@@ -81,6 +81,29 @@ namespace Tests.ManagerTests
 
         }
 
+        [TestMethod]
+        public void GetTodoItems_Final()
+        {
+            // arrange
+           
 
+
+
+            //// act
+            //IEnumerable<TodoItem> actualItemList = manager.GetTodoItems(expectedList.Id);
+
+            ////assert
+
+            //Assert.AreEqual(expectedItemList.Count, actualItemList.Count());
+            //foreach (TodoItem actualTodo in actualItemList)
+            //{
+            //    TodoItemDBO expectedTodo = expectedItemList.FirstOrDefault(ti => ti.Id == actualTodo.Id);
+            //    Assert.AreEqual(expectedTodo.Description, actualTodo.Description);
+            //    Assert.AreEqual(expectedTodo.IsActive, actualTodo.IsActive);
+            //    Assert.AreEqual(expectedTodo.IsComplete, actualTodo.IsComplete);
+            //}
+            
+
+        }
     }
 }
