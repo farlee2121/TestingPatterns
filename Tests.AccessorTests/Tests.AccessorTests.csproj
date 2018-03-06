@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessorTestBase.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="TodoItemAccessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,9 +71,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Accessors.DatabaseAccessors\Accessors.DatabaseAccessors.csproj">
+      <Project>{AF26B020-F939-4353-A41D-F6C0F87D0B81}</Project>
+      <Name>Accessors.DatabaseAccessors</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shared.DatabaseContext\Shared.DatabaseContext.csproj">
       <Project>{6886BD35-1655-456B-A4C2-6B57BD557254}</Project>
       <Name>Shared.DatabaseContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared.DataContracts\Shared.DataContracts.csproj">
+      <Project>{49F40A81-DBBC-4904-96E3-E5EF1F7D2A7B}</Project>
+      <Name>Shared.DataContracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tests.DataPrep\Tests.DataPrep.csproj">
       <Project>{458ED4A8-E0F2-4089-94CB-20B0EFDD4B46}</Project>

@@ -61,6 +61,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Accessors.DatabaseAccessors\Accessors.DatabaseAccessors.csproj">
+      <Project>{AF26B020-F939-4353-A41D-F6C0F87D0B81}</Project>
+      <Name>Accessors.DatabaseAccessors</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shared.DataContracts\Shared.DataContracts.csproj">
       <Project>{49F40A81-DBBC-4904-96E3-E5EF1F7D2A7B}</Project>
       <Name>Shared.DataContracts</Name>

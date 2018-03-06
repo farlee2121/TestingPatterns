@@ -1,4 +1,5 @@
-﻿using Shared.DataContracts;
+﻿using Accessors.DatabaseAccessors;
+using Shared.DataContracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,15 @@ namespace Managers.LazyCollectionOfAllManagers
     }
     internal class TodoCRUDManager : ITodoCRUDManager
     {
+        ITodoListAccessor todoListAccessor;
+        ITodoItemAccessor todoItemAccessor;
+        public TodoCRUDManager(ITodoListAccessor todoListAccessor, ITodoItemAccessor todoItemAccessor)
+        {
+            this.todoListAccessor = todoListAccessor;
+            this.todoItemAccessor = todoItemAccessor;
+        }
+
+
         public IEnumerable<TodoItem> GetTodoItems(Guid listId)
         {
             throw new NotImplementedException();

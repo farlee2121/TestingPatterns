@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -39,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,9 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBOs\DatabaseObjectBase.cs" />
+    <Compile Include="DBOs\MapperBase.cs" />
     <Compile Include="Migrations\201803052220061_Init.cs" />
     <Compile Include="Migrations\201803052220061_Init.Designer.cs">
       <DependentUpon>201803052220061_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803061729594_AddActiveFlags.cs" />
+    <Compile Include="Migrations\201803061729594_AddActiveFlags.Designer.cs">
+      <DependentUpon>201803061729594_AddActiveFlags.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="TodoContext.cs" />
@@ -66,6 +76,15 @@
     <EmbeddedResource Include="Migrations\201803052220061_Init.resx">
       <DependentUpon>201803052220061_Init.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803061729594_AddActiveFlags.resx">
+      <DependentUpon>201803061729594_AddActiveFlags.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared.DataContracts\Shared.DataContracts.csproj">
+      <Project>{49F40A81-DBBC-4904-96E3-E5EF1F7D2A7B}</Project>
+      <Name>Shared.DataContracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
