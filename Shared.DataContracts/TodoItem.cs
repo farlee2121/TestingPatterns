@@ -12,7 +12,5 @@ namespace Shared.DataContracts
 
         public bool IsComplete { get; set; }
 
-        public bool IsActive { get; set; }
-
     }
 }
