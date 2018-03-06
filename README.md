@@ -17,9 +17,9 @@ Patterns
 - Inconclusive tests to mark untested code // pending
 
 Libraries
-- JustMock (test dependency generator)
+- JustMock (test dependency generator; https://www.telerik.com/products/mocking.aspx)
   - alternatives: Moq, MSFakes, RhinoMocks
-- DeepEqual
-- Bogus
+- DeepEqual (https://github.com/jamesfoster/DeepEqual)
+- Bogus (https://github.com/bchavez/Bogus)
   - alternatives: AutoFixture
 - .NET Transactions TransactionScope

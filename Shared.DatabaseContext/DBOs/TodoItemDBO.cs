@@ -1,11 +1,13 @@
-﻿using System;
+﻿using AutoMapper;
+using Shared.DataContracts;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Shared.DatabaseContext.DBOs
 {
     [Table("TodoItems")]
-    public class TodoItemDBO
+    public class TodoItemDBO : DatabaseObjectBase
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
@@ -21,5 +23,12 @@ namespace Shared.DatabaseContext.DBOs
         [ForeignKey("TodoListId")]
         public TodoListDBO TodoList { get; set; }
 
+    }
+
+    public class TodoItem_Mapper : MapperBase<TodoItem, TodoItemDBO>
+    {
+        public TodoItem_Mapper()
+        {
+        }
     }
 }
