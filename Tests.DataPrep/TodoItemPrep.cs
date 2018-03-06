@@ -30,7 +30,6 @@ namespace Tests.DataPrep
                 TodoListId = sanitizedTodoList.Id,
                 Description = random.Lorem.Sentence(),
                 IsComplete = random.PickRandom(true, false),
-                IsActive = true
             };
 
             TodoItem savedItem = Create(todoItem);
@@ -38,10 +37,12 @@ namespace Tests.DataPrep
             return savedItem;
         }
 
-        public TodoItem Create(TodoItem todoItem)
+        public TodoItem Create(TodoItem todoItem, bool isActive = true)
         {
             TodoItem_Mapper mapper = new TodoItem_Mapper();
             TodoItemDBO model = mapper.ContractToModel(todoItem);
+            // handle active state here so I can create inactive items, but leave active flags off of data contracts
+            model.IsActive = isActive;
 
             TodoItemDBO savedModel = dataAccessor.Create(model);
             TodoItem savedContract = mapper.ModelToContract(savedModel);
