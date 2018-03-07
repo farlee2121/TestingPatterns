@@ -14,7 +14,7 @@ namespace Shared.DatabaseContext
         public DbSet<TodoItemDBO> TodoItems { get; set; }
         public DbSet<TodoListDBO> TodoLists { get; set; }
 
-        public TodoContext()
+        public TodoContext() : base("TodoDb")
         {
         }
     }

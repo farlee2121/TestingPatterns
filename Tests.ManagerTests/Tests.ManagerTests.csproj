@@ -71,6 +71,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Accessors.DatabaseAccessors\Accessors.DatabaseAccessors.csproj">
+      <Project>{AF26B020-F939-4353-A41D-F6C0F87D0B81}</Project>
+      <Name>Accessors.DatabaseAccessors</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Managers.LazyCollectionOfAllManagers\Managers.LazyCollectionOfAllManagers.csproj">
       <Project>{20052ECB-4E1D-4F2F-9F06-79111FE381F8}</Project>
       <Name>Managers.LazyCollectionOfAllManagers</Name>
