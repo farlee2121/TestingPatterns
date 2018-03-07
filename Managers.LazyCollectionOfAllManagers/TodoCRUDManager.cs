@@ -31,7 +31,7 @@ namespace Managers.LazyCollectionOfAllManagers
 
         public IEnumerable<TodoItem> GetTodoItems(Guid listId)
         {
-            throw new NotImplementedException();
+            return todoItemAccessor.GetTodoItemsForList(listId);
         }
 
         public void GetTodoList(Guid id)
