@@ -17,22 +17,14 @@ namespace Tests.ManagerTests
         //NOTE: Reuse of integration tests can also be done with inheritance
         //However, it causes duplicate names and, if you want to keep your
         //implementations private, it requires c# 7.2 for the private protected access modifier
+        // Though, I do suppose that you could pass in integration boolean
 
         TodoCRUDManagerTests unitTests = new TodoCRUDManagerTests();
-        TodoDataPrep dataPrep;
-        TodoCRUDManager manager;
 
         [TestInitialize]
-        public void OnClassInit()
-        {
-            // Implicit self binding allows us to get a concrete class with fulfilled dependencies
-            // https://github.com/ninject/ninject/wiki/dependency-injection-with-ninject
-            Ninject.IKernel kernel = DependencyInjectionLoader.BuildKernel();
-            manager = kernel.Get<TodoCRUDManager>();
-
-            dataPrep = new TodoDataPrep(true);
-
-            unitTests = new TodoCRUDManagerTests(manager, dataPrep);
+        public void OnInit()
+        {   
+            unitTests = new TodoCRUDManagerTests(true);
         }
 
         [TestMethod]

@@ -5,9 +5,11 @@ using Accessors.DatabaseAccessors;
 using DeepEqual.Syntax;
 using Managers.LazyCollectionOfAllManagers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Ninject;
 using Shared.DatabaseContext;
 using Shared.DatabaseContext.DBOs;
 using Shared.DataContracts;
+using Shared.DependencyInjectionKernel;
 using Telerik.JustMock.AutoMock;
 using Tests.DataPrep;
 
@@ -19,12 +21,23 @@ namespace Tests.ManagerTests
         TodoCRUDManager manager;
         MockingContainer<TodoCRUDManager> mockContainer = new MockingContainer<TodoCRUDManager>();
 
-        public TodoCRUDManagerTests() { }
-        internal TodoCRUDManagerTests(TodoCRUDManager manager = null, TodoDataPrep dataPrep = null)
+        public TodoCRUDManagerTests() : this(false) { }
+        public TodoCRUDManagerTests(bool isIntegration = false)
         {
             // this constructor allows for integration test reuse
-            this.manager = manager;
-            this.dataPrep = dataPrep ?? base.dataPrep;
+            if (isIntegration)
+            {
+                // Implicit self binding allows us to get a concrete class with fulfilled dependencies
+                // https://github.com/ninject/ninject/wiki/dependency-injection-with-ninject
+                Ninject.IKernel kernel = DependencyInjectionLoader.BuildKernel();
+                manager = kernel.Get<TodoCRUDManager>();
+                dataPrep = new TodoDataPrep(true);
+            }
+            else
+            {
+                manager = mockContainer.Instance;
+                // dataPrep non-persistant by default in base class
+            }
         }
 
         public override void OnCleanup()
@@ -33,10 +46,7 @@ namespace Tests.ManagerTests
 
         public override void OnInitialize()
         {
-            if(manager == null)
-            {
-                manager = mockContainer.Instance;
-            }
+           
         }
 
         [TestMethod]
