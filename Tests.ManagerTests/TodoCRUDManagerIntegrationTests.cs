@@ -14,10 +14,9 @@ namespace Tests.ManagerTests
     [TestClass]
     public class TodoCRUDManagerIntegrationTests
     {
-        //NOTE: Reuse of integration tests can also be done with inheritance
-        //However, it causes duplicate names and, if you want to keep your
-        //implementations private, it requires c# 7.2 for the private protected access modifier
-        // Though, I do suppose that you could pass in integration boolean
+        // NOTE: Reuse of integration tests can also be done with inheritance
+        // However, it causes duplicate names and both integration and 
+        // unit runs will be directed to the inherited class, making it unclear which test is which
 
         TodoCRUDManagerTests unitTests = new TodoCRUDManagerTests();
 
@@ -36,4 +35,17 @@ namespace Tests.ManagerTests
         }
 
     }
+
+    [TestClass]
+    public class TodoCRUDManagerIntegrationWithInheritanceTests : TodoCRUDManagerTests
+    {
+        //NOTE: This does not allow you to create distinct names for clarity and both integration and 
+        // unit runs will be directed to the inherited class, making it unclear which test is which
+
+        public TodoCRUDManagerIntegrationWithInheritanceTests(): base(true)
+        {
+        }
+
+    }
+
 }
