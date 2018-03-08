@@ -9,6 +9,7 @@ using Shared.DatabaseContext;
 using Shared.DatabaseContext.DBOs;
 using Shared.DataContracts;
 using Telerik.JustMock.AutoMock;
+using Tests.DataPrep;
 
 namespace Tests.ManagerTests
 {
@@ -18,13 +19,24 @@ namespace Tests.ManagerTests
         TodoCRUDManager manager;
         MockingContainer<TodoCRUDManager> mockContainer = new MockingContainer<TodoCRUDManager>();
 
+        public TodoCRUDManagerTests() { }
+        internal TodoCRUDManagerTests(TodoCRUDManager manager = null, TodoDataPrep dataPrep = null)
+        {
+            // this constructor allows for integration test reuse
+            this.manager = manager;
+            this.dataPrep = dataPrep ?? base.dataPrep;
+        }
+
         public override void OnCleanup()
         {
         }
 
         public override void OnInitialize()
         {
-            manager = mockContainer.Instance;
+            if(manager == null)
+            {
+                manager = mockContainer.Instance;
+            }
         }
 
         [TestMethod]
