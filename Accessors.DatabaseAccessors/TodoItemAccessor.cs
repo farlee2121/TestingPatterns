@@ -12,10 +12,20 @@ namespace Accessors.DatabaseAccessors
     public interface ITodoItemAccessor
     {
         IEnumerable<TodoItem> GetTodoItemsForList(Guid listId);
+
+        SaveResult<TodoItem> SaveTodoItem(TodoItem todoItem);
+
+        DeleteResult DeleteTodoItem(Guid id);
     }
     class TodoItemAccessor : ITodoItemAccessor
     {
         TodoItem_Mapper mapper = new TodoItem_Mapper();
+
+        public DeleteResult DeleteTodoItem(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<TodoItem> GetTodoItemsForList(Guid listId)
         {
             IEnumerable<TodoItem> todoItemList;
@@ -25,6 +35,11 @@ namespace Accessors.DatabaseAccessors
                 todoItemList = mapper.ModelListToContractList(todoItemModelList);
             }
             return todoItemList;
+        }
+
+        public SaveResult<TodoItem> SaveTodoItem(TodoItem todoItem)
+        {
+            throw new NotImplementedException();
         }
     }
 }
