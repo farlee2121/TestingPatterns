@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 
 namespace Test.NUnitExtensions
 {
-    public class TestFixture_PrefixedAttribute : NUnitAttribute, IFixtureBuilder
+    public class TestFixture_PrefixedAttribute : TestFixtureAttribute, IFixtureBuilder
     {
         string _prefix;
 
-        public TestFixture_PrefixedAttribute(Type subjectType)
+        public TestFixture_PrefixedAttribute(Type subjectType, params object[] arguments) : base(arguments)
         {
             _prefix = subjectType.Name;
         }
 
-        public TestFixture_PrefixedAttribute(string prefix)
+        public TestFixture_PrefixedAttribute(string prefix, params object[] arguments) : base(arguments)
         {
             this._prefix = prefix;
         }
@@ -27,7 +27,7 @@ namespace Test.NUnitExtensions
         public IEnumerable<TestSuite> BuildFrom(ITypeInfo typeInfo)
         {
             NUnitTestFixtureBuilder b = new NUnitTestFixtureBuilder();
-            TestSuite testSuite = b.BuildFrom(typeInfo);
+            TestSuite testSuite = b.BuildFrom(typeInfo, this);
             foreach (NUnit.Framework.Internal.Test t in testSuite.Tests)
             {
                 t.Name = $"{_prefix}_{t.Name}";

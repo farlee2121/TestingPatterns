@@ -16,8 +16,8 @@ using Tests.DataPrep;
 
 namespace Tests.ManagerTests
 {
-
-    [TestFixture_Prefixed(typeof(TodoCRUDManager))]
+    [TestFixture_Prefixed(typeof(TodoCRUDManager), false)]
+    [TestFixture_Prefixed(typeof(TodoCRUDManager), true)]
     public class TodoCRUDManagerTests : ManagerTestBase
     {
         TodoCRUDManager manager;
@@ -55,8 +55,7 @@ namespace Tests.ManagerTests
         {
             yield return new TestCaseData().SetName("yo dog");
         }
-
-        //[TestCaseSource("TestData")]
+        
         [Test]
         public void GetTodoItems()
         {
