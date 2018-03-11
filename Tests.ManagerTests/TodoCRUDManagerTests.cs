@@ -4,18 +4,20 @@ using System.Linq;
 using Accessors.DatabaseAccessors;
 using DeepEqual.Syntax;
 using Managers.LazyCollectionOfAllManagers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
+using NUnit.Framework;
 using Shared.DatabaseContext;
 using Shared.DatabaseContext.DBOs;
 using Shared.DataContracts;
 using Shared.DependencyInjectionKernel;
 using Telerik.JustMock.AutoMock;
+using Test.NUnitExtensions;
 using Tests.DataPrep;
 
 namespace Tests.ManagerTests
 {
-    [TestClass]
+
+    [TestFixture_Prefixed(typeof(TodoCRUDManager))]
     public class TodoCRUDManagerTests : ManagerTestBase
     {
         TodoCRUDManager manager;
@@ -49,10 +51,15 @@ namespace Tests.ManagerTests
            
         }
 
-        [TestMethod]
+        private static IEnumerable<TestCaseData> TestData()
+        {
+            yield return new TestCaseData().SetName("yo dog");
+        }
+
+        //[TestCaseSource("TestData")]
+        [Test]
         public void GetTodoItems()
         {
-
             // arrange
             TodoList todoList = dataPrep.TodoLists.Create();
             int expectedItemCount = 5;
@@ -67,4 +74,5 @@ namespace Tests.ManagerTests
             expectedItemList.ShouldDeepEqual(actualItemList);
         }
     }
+    
 }

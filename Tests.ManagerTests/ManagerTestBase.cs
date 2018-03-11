@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿//using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Tests.DataPrep;
 
 namespace Tests.ManagerTests
@@ -8,7 +9,7 @@ namespace Tests.ManagerTests
         protected TodoDataPrep dataPrep = new TodoDataPrep(false);
 
         public abstract void OnInitialize();
-        [TestInitialize]
+        [SetUp]
         public virtual void TestInitialize()
         {
             OnInitialize();
@@ -16,7 +17,7 @@ namespace Tests.ManagerTests
 
 
         public abstract void OnCleanup();
-        [TestCleanup]
+        [TearDown]
         public virtual void TestCleanup()
         {
             OnCleanup();
