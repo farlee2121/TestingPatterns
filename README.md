@@ -15,11 +15,13 @@ Patterns
 - DataPrep (centralized test data generators)
 - ConfigWrappers //pending
 - Inconclusive tests to mark untested code // pending
+- Test name modification for test runner (display extra info without manually adding it to each test name)
 
 Libraries
 - JustMock (test dependency generator; https://www.telerik.com/products/mocking.aspx)
   - alternatives: Moq, MSFakes, RhinoMocks
 - DeepEqual (https://github.com/jamesfoster/DeepEqual)
+  - alternatives: NUnit.DeepObjectCompare (https://github.com/PolarbearDK/NUnit.DeepObjectCompare)
 - Bogus (https://github.com/bchavez/Bogus)
   - alternatives: AutoFixture
 - .NET Transactions TransactionScope

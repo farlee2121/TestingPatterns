@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Shared.DatabaseContext;
 using System.Transactions;
 using Tests.DataPrep;
@@ -10,7 +11,7 @@ namespace Tests.AccessorTests
         protected TodoDataPrep dataPrep = new TodoDataPrep(true);
 
         protected TransactionScope _transactionScope;
-        [TestInitialize]
+        [SetUp]
         public virtual void TestInitialize()
         {
             TodoContext database = new TodoContext();
@@ -23,7 +24,7 @@ namespace Tests.AccessorTests
 
         public abstract void OnInitialize();
 
-        [TestCleanup]
+        [TearDown]
         public virtual void TestCleanup()
         {
             _transactionScope.Dispose();

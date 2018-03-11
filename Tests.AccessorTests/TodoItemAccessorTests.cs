@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using Accessors.DatabaseAccessors;
 using DeepEqual.Syntax;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Shared.DatabaseContext;
 using Shared.DatabaseContext.DBOs;
 using Shared.DataContracts;
+using Test.NUnitExtensions;
 
 namespace Tests.AccessorTests
 {
-    [TestClass]
+    [TestFixture_Prefixed(typeof(TodoItemAccessor))]
     public class TodoItemAccessorTests : AccessorTestBase
     {
         TodoItemAccessor accessor;
@@ -19,7 +20,7 @@ namespace Tests.AccessorTests
             accessor = new TodoItemAccessor();
         }
 
-        [TestMethod]
+        [Test]
         public void GetTodoItems_Ugly()
         {
 
@@ -78,7 +79,7 @@ namespace Tests.AccessorTests
 
         }
 
-        [TestMethod]
+        [Test]
         public void GetTodoItems_Final()
         {
             // arrange
