@@ -10,13 +10,13 @@ namespace Managers.LazyCollectionOfAllManagers
 {
     public interface ITodoCRUDManager
     {
-        void GetTodoList(Guid id);
+        TodoList GetTodoList(Guid id);
 
         IEnumerable<TodoItem> GetTodoItems(Guid listId);
 
-        void SaveTodoItem();
+        SaveResult<TodoItem> SaveTodoItem(TodoItem todoItem);
 
-        void SaveTodoList();
+        SaveResult<TodoList> SaveTodoList(TodoList todoList);
     }
     internal class TodoCRUDManager : ITodoCRUDManager
     {
@@ -28,25 +28,30 @@ namespace Managers.LazyCollectionOfAllManagers
             this.todoItemAccessor = todoItemAccessor;
         }
 
+        //
+        // NOTE: These methods are currently all pass throughs because of the simple structure
+        // However, it is still worth having the manager to organize the functionality needed
+        // for this 'flow' in the application
+        //
 
         public IEnumerable<TodoItem> GetTodoItems(Guid listId)
         {
             return todoItemAccessor.GetTodoItemsForList(listId);
         }
 
-        public void GetTodoList(Guid id)
+        public TodoList GetTodoList(Guid id)
         {
-            throw new NotImplementedException();
+            return todoListAccessor.GetTodoList(id);
         }
 
-        public void SaveTodoItem()
+        public SaveResult<TodoItem> SaveTodoItem(TodoItem todoItem)
         {
-            throw new NotImplementedException();
+            return todoItemAccessor.SaveTodoItem(todoItem);
         }
 
-        public void SaveTodoList()
+        public SaveResult<TodoList> SaveTodoList(TodoList todoList)
         {
-            throw new NotImplementedException();
+            return todoListAccessor.SaveTodoList(todoList);
         }
     }
 }

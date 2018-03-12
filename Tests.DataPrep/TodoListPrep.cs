@@ -45,5 +45,17 @@ namespace Tests.DataPrep
 
             return savedContract;
         }
+
+        public IEnumerable<TodoList> CreateManyForUser(int count, User user)
+        {
+            List<TodoList> todoLists = new List<TodoList>();
+            for (int i = 0; i < count; i++)
+            {
+                TodoList todoList = Create(user);
+                todoLists.Add(todoList);
+            }
+
+            return todoLists;
+        }
     }
 }

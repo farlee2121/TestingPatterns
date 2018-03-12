@@ -32,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Shared", "5.Shared", "{E1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.DependencyInjectionKernel", "Shared.DependencyInjectionKernel\Shared.DependencyInjectionKernel.csproj", "{5F633149-4C66-4D34-98AB-28EE4662B442}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.NUnitExtensions", "Test.NUnitExtensions\Test.NUnitExtensions.csproj", "{3AC5C65A-6F68-479C-A078-3D2E573111BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{5F633149-4C66-4D34-98AB-28EE4662B442}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F633149-4C66-4D34-98AB-28EE4662B442}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F633149-4C66-4D34-98AB-28EE4662B442}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AC5C65A-6F68-479C-A078-3D2E573111BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AC5C65A-6F68-479C-A078-3D2E573111BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AC5C65A-6F68-479C-A078-3D2E573111BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AC5C65A-6F68-479C-A078-3D2E573111BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +89,7 @@ Global
 		{802F9C0A-9FC5-444B-BD3B-AED8B6F148A8} = {3B08858C-6FD1-47E7-824C-0B3F1D234455}
 		{AF26B020-F939-4353-A41D-F6C0F87D0B81} = {CA030337-D04B-4393-9869-897FA379EC1B}
 		{5F633149-4C66-4D34-98AB-28EE4662B442} = {E1966F97-64AF-4CA1-9CDB-DA841C9491B9}
+		{3AC5C65A-6F68-479C-A078-3D2E573111BB} = {3B08858C-6FD1-47E7-824C-0B3F1D234455}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1292F67E-01C7-4886-997A-51E54049301C}
