@@ -3,6 +3,7 @@ using Shared.DatabaseContext.DBOs;
 using Shared.DataContracts;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,17 @@ namespace Accessors.DatabaseAccessors
 
         public DeleteResult DeleteTodoItem(Guid id)
         {
-            throw new NotImplementedException();
+            using (TodoContext db = new TodoContext())
+            {
+                TodoItemDBO todoItemModel = db.TodoItems.FirstOrDefault(ti => ti.Id == id);
+                todoItemModel.IsActive = false;
+
+                db.SaveChanges();
+
+                DeleteResult deleteResult = new DeleteResult();
+
+                return deleteResult;
+            }
         }
 
         public IEnumerable<TodoItem> GetTodoItemsForList(Guid listId)
@@ -39,7 +50,26 @@ namespace Accessors.DatabaseAccessors
 
         public SaveResult<TodoItem> SaveTodoItem(TodoItem todoItem)
         {
-            throw new NotImplementedException();
+            using (TodoContext db = new TodoContext())
+            {
+                TodoItemDBO dbModel = mapper.ContractToModel(todoItem);
+
+                if(todoItem.Id == DataConstants.DefaultId)
+                {
+                    db.TodoItems.Add(dbModel);
+                }
+                else
+                {
+                    db.TodoItems.Attach(dbModel);
+                    db.Entry(dbModel).State = EntityState.Modified;
+                }
+                db.SaveChanges();
+
+                TodoItem savedTodoItem = mapper.ModelToContract(dbModel);
+
+                SaveResult<TodoItem> saveResult = new SaveResult<TodoItem>(savedTodoItem);
+                return saveResult;
+            }
         }
     }
 }
