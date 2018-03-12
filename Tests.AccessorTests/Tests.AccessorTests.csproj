@@ -68,6 +68,7 @@
     <Compile Include="AccessorTestBase.cs" />
     <Compile Include="TodoItemAccessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TodoListAccessorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
