@@ -10,6 +10,7 @@ using Shared.DatabaseContext;
 using Shared.DatabaseContext.DBOs;
 using Shared.DataContracts;
 using Shared.DependencyInjectionKernel;
+using Telerik.JustMock;
 using Telerik.JustMock.AutoMock;
 using Test.NUnitExtensions;
 using Tests.DataPrep;
@@ -66,6 +67,58 @@ namespace Tests.ManagerTests
 
             //assert
             expectedItemList.ShouldDeepEqual(actualItemList);
+        }
+
+        [Test]
+        public void GetTodoList()
+        {
+            // arrange
+            TodoList expectedTodoList = dataPrep.TodoLists.Create();
+
+            mockContainer.Arrange<ITodoListAccessor>(accessor => accessor.GetTodoList(expectedTodoList.Id)).Returns(expectedTodoList);
+
+            // act
+            TodoList actualTodoList = manager.GetTodoList(expectedTodoList.Id);
+
+            //assert
+            expectedTodoList.ShouldDeepEqual(actualTodoList);
+        }
+
+        [Test]
+        public void SaveTodoItem()
+        {
+            // arrange
+            TodoItem expectedTodoItem = dataPrep.TodoItems.Create();
+
+            expectedTodoItem.Description = Guid.NewGuid().ToString();
+
+            mockContainer.Arrange<ITodoItemAccessor>(accessor => accessor.SaveTodoItem(expectedTodoItem)).Returns(new SaveResult<TodoItem>(expectedTodoItem));
+
+            // act
+            SaveResult<TodoItem> todoItemResult = manager.SaveTodoItem(expectedTodoItem);
+            TodoItem actualTodoItem = todoItemResult.Result;
+
+            //assert
+            Assert.IsTrue(todoItemResult.Success);
+            // because we mutated the expected object, the changed property is as expected on the original object too
+            expectedTodoItem.ShouldDeepEqual(actualTodoItem);
+        }
+
+        [Test]
+        public void SaveTodoList()
+        {
+            // arrange
+            TodoList expectedTodoList = dataPrep.TodoLists.Create();
+            expectedTodoList.Title = Guid.NewGuid().ToString();
+
+            mockContainer.Arrange<ITodoListAccessor>(accessor => accessor.SaveTodoList(Arg.IsAny<TodoList>())).Returns(new SaveResult<TodoList>(expectedTodoList));
+
+            // act
+            SaveResult<TodoList> todoListResult = manager.SaveTodoList(expectedTodoList);
+
+            //assert
+            Assert.IsTrue(todoListResult.Success);
+            expectedTodoList.ShouldDeepEqual(todoListResult.Result);
         }
     }
     
