@@ -94,5 +94,59 @@ namespace Tests.AccessorTests
             expectedItemList.ShouldDeepEqual(actualItemList);
         }
 
+        [Test]
+        public void SaveTodoItem_Update()
+        {
+            // arrange
+            TodoItem expectedTodoItem = dataPrep.TodoItems.Create();
+            expectedTodoItem.Description = Guid.NewGuid().ToString();
+
+            // act
+            SaveResult<TodoItem> saveResult = accessor.SaveTodoItem(expectedTodoItem);
+            TodoItem actualTodoItem = saveResult.Result;
+
+            //assert
+            Assert.IsTrue(saveResult.Success);
+            expectedTodoItem.ShouldDeepEqual(actualTodoItem);
+        }
+
+        [Test]
+        public void SaveTodoItem_Create()
+        {
+            // arrange
+            TodoList parentList = dataPrep.TodoLists.Create();
+            TodoItem expectedTodoItem = new TodoItem()
+            {
+                TodoListId = parentList.Id,
+                Description = Guid.NewGuid().ToString(),
+                IsComplete = false,
+            };
+
+            // act
+            SaveResult<TodoItem> saveResult = accessor.SaveTodoItem(expectedTodoItem);
+            TodoItem actualTodoItem = saveResult.Result;
+
+            //assert
+            Assert.IsTrue(saveResult.Success);
+            Assert.IsNotNull(actualTodoItem.Id);
+            expectedTodoItem.WithDeepEqual(actualTodoItem).IgnoreSourceProperty((ti) =>ti.Id);
+        }
+
+        [Test]
+        public void DeleteTodoItem()
+        {
+            // arrange
+            TodoItem expectedTodoItem = dataPrep.TodoItems.Create();
+
+            // act
+            DeleteResult deleteResult = accessor.DeleteTodoItem(expectedTodoItem.Id);
+
+            //assert
+            Assert.IsTrue(deleteResult.Success);
+
+            IEnumerable<TodoItem> retrievableItemList = accessor.GetTodoItemsForList(expectedTodoItem.TodoListId);
+            Assert.IsNull(retrievableItemList.FirstOrDefault(ti => ti.Id == expectedTodoItem.Id));
+        }
+
     }
 }
