@@ -77,12 +77,12 @@ namespace Tests.ManagerTests
 
         // Conclusion: use NUnit for simpler and more powerful test extension
 
-        TodoCRUDManagerTests unitTests = new TodoCRUDManagerTests();
+        MSTest_UnitTest unitTests = new MSTest_UnitTest();
 
         [TestInitialize]
         public void OnInit()
         {
-            unitTests = new TodoCRUDManagerTests(true);
+            unitTests = new MSTest_UnitTest(true);
         }
 
         [TestMethod]
@@ -90,7 +90,7 @@ namespace Tests.ManagerTests
         {
             // Want to test this is going to the DB? Try debugging and stepping through
             // or setting dataprep persistance to false
-            unitTests.GetTodoItems();
+            unitTests.MSTest_GetTodoItems();
         }
 
     }
