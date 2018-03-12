@@ -26,6 +26,10 @@ namespace Test.NUnitExtensions
 
         public IEnumerable<TestSuite> BuildFrom(ITypeInfo typeInfo)
         {
+            // TODO: the name set here will still get overridden by a test case. Figure out how to
+            // build on top of the test case name instead
+            // This possibly implies that cases are built after the fixture methods run
+            // https://groups.google.com/forum/#!topic/nunit-discuss/PT0NQaL7AMg
             NUnitTestFixtureBuilder b = new NUnitTestFixtureBuilder();
             TestSuite testSuite = b.BuildFrom(typeInfo, this);
             foreach (NUnit.Framework.Internal.Test t in testSuite.Tests)
