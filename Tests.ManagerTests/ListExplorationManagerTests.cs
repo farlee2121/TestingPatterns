@@ -4,10 +4,11 @@ using Managers.LazyCollectionOfAllManagers;
 using NUnit.Framework;
 using Shared.DataContracts;
 using Telerik.JustMock.AutoMock;
+using Test.NUnitExtensions;
 
 namespace Tests.ManagerTests
 {
-    [TestFixture]
+    [TestFixture_Prefixed(typeof(ListExplorationManager))]
     public class ListExplorationManagerTests : ManagerTestBase
     {
         MockingContainer<ListExplorationManager> mockContainer;
