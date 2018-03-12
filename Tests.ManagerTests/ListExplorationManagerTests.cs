@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Managers.LazyCollectionOfAllManagers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Shared.DataContracts;
 using Telerik.JustMock.AutoMock;
 
 namespace Tests.ManagerTests
 {
-    [TestClass]
+    [TestFixture]
     public class ListExplorationManagerTests : ManagerTestBase
     {
         MockingContainer<ListExplorationManager> mockContainer;
@@ -25,12 +25,20 @@ namespace Tests.ManagerTests
 
         
 
-        [TestMethod]
+        [Test]
         public void GetUserStats()
         {
-            Assert.Inconclusive("Untested: untested as an example of code marking");
+            Assert.Inconclusive("Untested: untested as an example of code marking. These markers are usually reserved for legacy code or unverifiable external dependencies");
+            User user = dataPrep.Users.Create();
+            manager.GetUserStats(user.Id);
         }
 
-        
+        [Test]
+        public void GetUserLists()
+        {
+            Assert.Inconclusive("Untested: untested as an example of code marking. These markers are usually reserved for legacy code or unverifiable external dependencies");
+            User user = dataPrep.Users.Create();
+            manager.GetUserLists(user.Id);
+        }
     }
 }
