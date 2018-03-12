@@ -50,11 +50,6 @@ namespace Tests.ManagerTests
         {
            
         }
-
-        private static IEnumerable<TestCaseData> TestData()
-        {
-            yield return new TestCaseData().SetName("yo dog");
-        }
         
         [Test]
         public void GetTodoItems()
