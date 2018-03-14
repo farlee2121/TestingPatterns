@@ -30,3 +30,6 @@ In other words, they:
 
 
 #Result Types (i.e. SaveResult/DeleteResult)
+
+Result types allow a return value with relevant meta-info. Most commonly, operation success or errors in not successful.
+They allow you to handle errors in a service and normalize success/failure information for consuming services.
