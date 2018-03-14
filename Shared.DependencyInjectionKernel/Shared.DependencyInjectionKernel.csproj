@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="DependencyInjectionLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="README_DependencyInjection.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
