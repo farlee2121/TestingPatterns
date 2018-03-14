@@ -24,6 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Documentation", "0.Docume
 		1.README_SolutionStructure.md = 1.README_SolutionStructure.md
 		README.md = README.md
 		Shared.DataContracts\README_DataContracts.md = Shared.DataContracts\README_DataContracts.md
+		Tests.DataPrep\README_DataPrep.md = Tests.DataPrep\README_DataPrep.md
 		Shared.DatabaseContext\DTOs\README_DataTransferObjects.md = Shared.DatabaseContext\DTOs\README_DataTransferObjects.md
 		Shared.DependencyInjectionKernel\README_DependencyInjection.md = Shared.DependencyInjectionKernel\README_DependencyInjection.md
 		Shared.DependencyInjectionKernel\README_DependencyInjectionKernel.md = Shared.DependencyInjectionKernel\README_DependencyInjectionKernel.md
