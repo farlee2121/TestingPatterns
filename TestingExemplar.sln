@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accessors.DatabaseAccessors
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3B08858C-6FD1-47E7-824C-0B3F1D234455}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Solution Items", "0.Solution Items", "{9B6F4405-B2EC-4143-A1B2-92A0B1CD0130}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Documentation", "0.Documentation", "{9B6F4405-B2EC-4143-A1B2-92A0B1CD0130}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection

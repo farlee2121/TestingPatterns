@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Shared.DatabaseContext.DBOs
 {
     [Table("Users")]
-    public class UserDBO : DatabaseObjectBase
+    public class UserDTO : DatabaseObjectBase
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
@@ -21,7 +21,7 @@ namespace Shared.DatabaseContext.DBOs
 
     }
 
-    public class User_Mapper : MapperBase<User, UserDBO>
+    public class User_Mapper : MapperBase<User, UserDTO>
     {
 
     }

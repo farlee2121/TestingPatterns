@@ -37,10 +37,10 @@ namespace Tests.DataPrep
         public TodoList Create(TodoList todoList, bool isActive = true)
         {
             TodoList_Mapper mapper = new TodoList_Mapper();
-            TodoListDBO model = mapper.ContractToModel(todoList);
+            TodoListDTO model = mapper.ContractToModel(todoList);
             model.IsActive = isActive;
 
-            TodoListDBO savedModel = dataAccessor.Create(model);
+            TodoListDTO savedModel = dataAccessor.Create(model);
             TodoList savedContract = mapper.ModelToContract(savedModel);
 
             return savedContract;
