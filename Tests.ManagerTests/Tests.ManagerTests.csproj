@@ -79,6 +79,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="README_IntegrationReuse_WhiteDoc.md" />
+    <None Include="README_TestClassReuse.md" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Accessors.DatabaseAccessors\Accessors.DatabaseAccessors.csproj">
