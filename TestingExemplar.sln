@@ -22,6 +22,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Documentation", "0.Documentation", "{9B6F4405-B2EC-4143-A1B2-92A0B1CD0130}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		Shared.DataContracts\README_DataContracts.md = Shared.DataContracts\README_DataContracts.md
+		Shared.DatabaseContext\DTOs\README_DataTransferObjects.md = Shared.DatabaseContext\DTOs\README_DataTransferObjects.md
+		Test.NUnitExtensions\TestFixture_Prefixed.cs = Test.NUnitExtensions\TestFixture_Prefixed.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Managers", "2.Managers", "{01383730-F2FD-4900-B91C-4784EDA64DF6}"
@@ -33,6 +36,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.DependencyInjectionKernel", "Shared.DependencyInjectionKernel\Shared.DependencyInjectionKernel.csproj", "{5F633149-4C66-4D34-98AB-28EE4662B442}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.NUnitExtensions", "Test.NUnitExtensions\Test.NUnitExtensions.csproj", "{3AC5C65A-6F68-479C-A078-3D2E573111BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C2338092-6298-42F4-BD55-4D79EB2AFBFB}"
+	ProjectSection(SolutionItems) = preProject
+		Shared.DependencyInjectionKernel\README_DependencyInjectionKernel.md = Shared.DependencyInjectionKernel\README_DependencyInjectionKernel.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
