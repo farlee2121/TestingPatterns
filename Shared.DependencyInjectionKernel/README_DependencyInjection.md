@@ -21,3 +21,21 @@ Practically, this
  - Allows us to swap in different dependencies of equivalent purpose with only config change
    - E.g. you could completely switch storage paradigms based on execution environment 
  - Allows us to isolate code for testing
+
+
+# Distributed Dependency Configuration / Loaders
+
+You may notice that each project (thus assembly) defines it's own dependency injection configuration.
+This allows us to configure DI without making implementations public. This prevents people from using
+concrete classes directly and thus breaking code isolation.
+
+It also packages dependencies that are used together, cutting down on use-time config setup.
+
+# Friend Assemblies
+Along side every dependency loader is a friend assembly file. Friend assemblies are a .NET concept 
+that allows you to expose internal constructs to specific assemblies.
+
+This allows us to test against concrete classes while keeping them hidden from other consuming assemblies.
+
+We have a dedicated friendassembly file for simplicity of finding and modifying the friends as well as leaving
+this unrelated concern out of the service implementations
