@@ -48,5 +48,8 @@
     <Compile Include="User.cs" />
     <Compile Include="UserAccountStats.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="README_DataContracts.md" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

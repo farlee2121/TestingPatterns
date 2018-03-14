@@ -26,7 +26,7 @@ namespace Accessors.DatabaseAccessors
         {
             using (TodoContext db = new TodoContext())
             {
-                TodoItemDBO todoItemModel = db.TodoItems.FirstOrDefault(ti => ti.Id == id);
+                TodoItemDTO todoItemModel = db.TodoItems.FirstOrDefault(ti => ti.Id == id);
                 todoItemModel.IsActive = false;
 
                 db.SaveChanges();
@@ -42,7 +42,7 @@ namespace Accessors.DatabaseAccessors
             IEnumerable<TodoItem> todoItemList;
             using (TodoContext db = new TodoContext())
             {
-                IEnumerable<TodoItemDBO> todoItemModelList = db.TodoItems.Where(ti => ti.TodoListId == listId && ti.IsActive).ToList();
+                IEnumerable<TodoItemDTO> todoItemModelList = db.TodoItems.Where(ti => ti.TodoListId == listId && ti.IsActive).ToList();
                 todoItemList = mapper.ModelListToContractList(todoItemModelList);
             }
             return todoItemList;
@@ -52,7 +52,7 @@ namespace Accessors.DatabaseAccessors
         {
             using (TodoContext db = new TodoContext())
             {
-                TodoItemDBO dbModel = mapper.ContractToModel(todoItem);
+                TodoItemDTO dbModel = mapper.ContractToModel(todoItem);
 
                 if(todoItem.Id == DataConstants.DefaultId)
                 {

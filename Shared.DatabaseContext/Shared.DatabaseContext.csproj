@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DBOs\README_DatabaseObjects.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

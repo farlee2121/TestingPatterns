@@ -34,10 +34,10 @@ namespace Tests.DataPrep
         {
             // NOTE/TODO: feels like there should be a good way to encapsulate this so most data prep classes don't have to write it
             User_Mapper mapper = new User_Mapper();
-            UserDBO model = mapper.ContractToModel(user);
+            UserDTO model = mapper.ContractToModel(user);
             model.IsActive = isActive;
 
-            UserDBO savedModel = dataAccessor.Create(model);
+            UserDTO savedModel = dataAccessor.Create(model);
             User savedContract = mapper.ModelToContract(savedModel);
 
             return savedContract;

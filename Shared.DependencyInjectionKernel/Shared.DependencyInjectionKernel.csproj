@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="README_DependencyInjectionKernel.md" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Accessors.DatabaseAccessors\Accessors.DatabaseAccessors.csproj">
