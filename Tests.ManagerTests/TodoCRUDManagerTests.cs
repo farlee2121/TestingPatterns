@@ -17,6 +17,7 @@ using Tests.DataPrep;
 
 namespace Tests.ManagerTests
 {
+    //NOTE: test fixture arguments break code lens support, submitted issue #485 https://github.com/nunit/nunit3-vs-adapter/issues/485
     [TestFixture_Prefixed(typeof(TodoCRUDManager), false)]
     [TestFixture_Prefixed(typeof(TodoCRUDManager), true)]
     public class TodoCRUDManagerTests : ManagerTestBase
