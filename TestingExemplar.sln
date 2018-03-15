@@ -30,6 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Documentation", "0.Docume
 		Shared.DependencyInjectionKernel\README_DependencyInjectionKernel.md = Shared.DependencyInjectionKernel\README_DependencyInjectionKernel.md
 		README_NamingPatterns.md = README_NamingPatterns.md
 		Tests.ManagerTests\README_TestClassReuse.md = Tests.ManagerTests\README_TestClassReuse.md
+		Tests.TestBases\README_TestingTools.md = Tests.TestBases\README_TestingTools.md
 		Test.NUnitExtensions\README_TestPrefixes.md = Test.NUnitExtensions\README_TestPrefixes.md
 	EndProjectSection
 EndProject
