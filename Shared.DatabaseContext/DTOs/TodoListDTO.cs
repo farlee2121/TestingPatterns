@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Shared.DatabaseContext.DBOs
 {
     [Table("TodoLists")]
-    public class TodoListDBO : DatabaseObjectBase
+    public class TodoListDTO : DatabaseObjectBase
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
@@ -16,11 +16,11 @@ namespace Shared.DatabaseContext.DBOs
         public string Title { get; set; }
 
         [ForeignKey("UserId")]
-        public UserDBO User { get; set; }
+        public UserDTO User { get; set; }
         public bool IsActive { get; set; }
     }
 
-    public class TodoList_Mapper : MapperBase<TodoList, TodoListDBO>
+    public class TodoList_Mapper : MapperBase<TodoList, TodoListDTO>
     {
 
     }

@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Shared.DatabaseContext.DBOs
 {
     [Table("TodoItems")]
-    public class TodoItemDBO : DatabaseObjectBase
+    public class TodoItemDTO : DatabaseObjectBase
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
@@ -21,11 +21,11 @@ namespace Shared.DatabaseContext.DBOs
         public bool IsActive { get; set; }
 
         [ForeignKey("TodoListId")]
-        public TodoListDBO TodoList { get; set; }
+        public TodoListDTO TodoList { get; set; }
 
     }
 
-    public class TodoItem_Mapper : MapperBase<TodoItem, TodoItemDBO>
+    public class TodoItem_Mapper : MapperBase<TodoItem, TodoItemDTO>
     {
         public TodoItem_Mapper()
         {

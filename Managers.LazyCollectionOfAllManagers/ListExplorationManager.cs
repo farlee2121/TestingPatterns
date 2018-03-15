@@ -19,6 +19,7 @@ namespace Managers.LazyCollectionOfAllManagers
 
     internal class ListExplorationManager : IListExplorationManager
     {
+
         public IEnumerable<TodoList> GetUserLists(Guid userId)
         {
             throw new NotImplementedException();

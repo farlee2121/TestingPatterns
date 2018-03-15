@@ -45,9 +45,11 @@
   <ItemGroup>
     <Compile Include="DependencyInjectionLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="README_DependencyInjection.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="README_DependencyInjectionKernel.md" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Accessors.DatabaseAccessors\Accessors.DatabaseAccessors.csproj">

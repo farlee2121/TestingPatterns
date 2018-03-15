@@ -40,11 +40,11 @@ namespace Tests.DataPrep
         public TodoItem Create(TodoItem todoItem, bool isActive = true)
         {
             TodoItem_Mapper mapper = new TodoItem_Mapper();
-            TodoItemDBO model = mapper.ContractToModel(todoItem);
+            TodoItemDTO model = mapper.ContractToModel(todoItem);
             // handle active state here so I can create inactive items, but leave active flags off of data contracts
             model.IsActive = isActive;
 
-            TodoItemDBO savedModel = dataAccessor.Create(model);
+            TodoItemDTO savedModel = dataAccessor.Create(model);
             TodoItem savedContract = mapper.ModelToContract(savedModel);
 
             return savedContract;
