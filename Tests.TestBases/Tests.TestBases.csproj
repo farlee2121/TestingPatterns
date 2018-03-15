@@ -57,6 +57,7 @@
     <Compile Include="AccessorTestBase.cs" />
     <Compile Include="ManagerTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="README_TestingTools.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
