@@ -27,14 +27,14 @@ namespace Tests.AccessorTests
             // arrange
             using (TodoContext db = new TodoContext())
             {
-                UserDBO user = new UserDBO()
+                UserDTO user = new UserDTO()
                 {
                     Name = "Bob",
                 };
                 db.Users.Add(user);
                 db.SaveChanges();
 
-                TodoListDBO expectedList = new TodoListDBO()
+                TodoListDTO expectedList = new TodoListDTO()
                 {
                     UserId = user.Id,
                     Title = Guid.NewGuid().ToString(),
@@ -42,11 +42,11 @@ namespace Tests.AccessorTests
                 db.TodoLists.Add(expectedList);
                 db.SaveChanges();
 
-                List<TodoItemDBO> expectedItemList = new List<TodoItemDBO>();
+                List<TodoItemDTO> expectedItemList = new List<TodoItemDTO>();
                 int expectedTodoItemCount = 5;
                 for (int i = 0; i < expectedTodoItemCount; i++)
                 {
-                    TodoItemDBO expectedItem = new TodoItemDBO()
+                    TodoItemDTO expectedItem = new TodoItemDTO()
                     {
                         TodoListId = expectedList.Id,
                         Description = Guid.NewGuid().ToString(),
@@ -65,7 +65,7 @@ namespace Tests.AccessorTests
                 Assert.AreEqual(expectedItemList.Count, actualItemList.Count());
                 foreach (TodoItem actualTodo in actualItemList)
                 {
-                    TodoItemDBO expectedTodo = expectedItemList.FirstOrDefault(ti => ti.Id == actualTodo.Id);
+                    TodoItemDTO expectedTodo = expectedItemList.FirstOrDefault(ti => ti.Id == actualTodo.Id);
                     Assert.AreEqual(expectedTodo.TodoListId, actualTodo.TodoListId);
                     Assert.AreEqual(expectedTodo.Description, actualTodo.Description);
                     Assert.AreEqual(expectedTodo.IsComplete, actualTodo.IsComplete);

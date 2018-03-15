@@ -51,8 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBOs\DatabaseObjectBase.cs" />
-    <Compile Include="DBOs\MapperBase.cs" />
+    <Compile Include="DTOs\DatabaseObjectBase.cs" />
+    <Compile Include="DTOs\MapperBase.cs" />
     <Compile Include="Migrations\201803052220061_Init.cs" />
     <Compile Include="Migrations\201803052220061_Init.Designer.cs">
       <DependentUpon>201803052220061_Init.cs</DependentUpon>
@@ -63,13 +63,14 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="TodoContext.cs" />
-    <Compile Include="DBOs\TodoItemDBO.cs" />
-    <Compile Include="DBOs\TodoListDBO.cs" />
-    <Compile Include="DBOs\UserDBO.cs" />
+    <Compile Include="DTOs\TodoItemDTO.cs" />
+    <Compile Include="DTOs\TodoListDTO.cs" />
+    <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DTOs\README_DataTransferObjects.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

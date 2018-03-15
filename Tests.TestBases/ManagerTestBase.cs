@@ -1,16 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Shared.DatabaseContext;
 using System.Transactions;
 using Tests.DataPrep;
 
-namespace Tests.AccessorTests
+namespace Tests.ManagerTests
 {
-    public abstract class AccessorTestBase
+    public abstract class ManagerTestBase
     {
-        protected TodoDataPrep dataPrep = new TodoDataPrep(true);
+        protected TodoDataPrep dataPrep = new TodoDataPrep(false);
+        TransactionScope _transactionScope;
 
-        protected TransactionScope _transactionScope;
+        public abstract void OnInitialize();
         [SetUp]
         public virtual void TestInitialize()
         {
@@ -22,12 +22,14 @@ namespace Tests.AccessorTests
             OnInitialize();
         }
 
-        public abstract void OnInitialize();
 
+        public abstract void OnCleanup();
         [TearDown]
         public virtual void TestCleanup()
         {
+            OnCleanup();
             _transactionScope.Dispose();
         }
+
     }
 }

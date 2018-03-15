@@ -43,6 +43,9 @@ The question is now how to generate differentiated names in the test runner with
   It is not entirely clear how to extend these types while maintaining behavior
   because you cannot override when you inherit from the default attributes. Instead,
   the logic is available through internal builders and type constructors.
+  However, you can also inherit from the default attribute and 'hide' the base class's method 
+  by creating one of the same signature. This breaks liscov substitution, but it 
+  allows you to reuse the property logic of the base attibutes
 
 
 BONUS: Interesting thread on using NUnit tests to augment documentation https://stackoverflow.com/questions/8727684/how-can-i-generate-documentation-from-nunit-tests

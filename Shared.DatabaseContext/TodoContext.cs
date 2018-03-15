@@ -10,9 +10,9 @@ namespace Shared.DatabaseContext
 {
     public class TodoContext : DbContext
     {
-        public DbSet<UserDBO> Users { get; set; }
-        public DbSet<TodoItemDBO> TodoItems { get; set; }
-        public DbSet<TodoListDBO> TodoLists { get; set; }
+        public DbSet<UserDTO> Users { get; set; }
+        public DbSet<TodoItemDTO> TodoItems { get; set; }
+        public DbSet<TodoListDTO> TodoLists { get; set; }
 
         public TodoContext() : base("TodoDb")
         {
