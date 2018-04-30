@@ -18,7 +18,7 @@ Testing Patterns
 - Dependency Injection
 - DataPrep (centralized test data generators)
 - ConfigWrappers //pending
-- Inconclusive tests to mark untested code // pending
+- Inconclusive tests to mark untested code
 - Test name modification for test runner (display extra info without manually adding it to each test name)
 - Unit/Integration test reuse
 
