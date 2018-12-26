@@ -99,7 +99,7 @@
       <Name>Shared.DataContracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shared.DependencyInjectionKernel\Shared.DependencyInjectionKernel.csproj">
-      <Project>{5F633149-4C66-4D34-98AB-28EE4662B442}</Project>
+      <Project>{a697facf-33eb-47cf-91cd-11cb6a870cb6}</Project>
       <Name>Shared.DependencyInjectionKernel</Name>
     </ProjectReference>
     <ProjectReference Include="..\Test.NUnitExtensions\Test.NUnitExtensions.csproj">
