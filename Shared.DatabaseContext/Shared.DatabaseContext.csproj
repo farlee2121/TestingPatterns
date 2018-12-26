@@ -83,7 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared.DataContracts\Shared.DataContracts.csproj">
-      <Project>{49F40A81-DBBC-4904-96E3-E5EF1F7D2A7B}</Project>
+      <Project>{0c5f8e80-076a-4c48-900d-d5e6b0c1f34e}</Project>
       <Name>Shared.DataContracts</Name>
     </ProjectReference>
   </ItemGroup>
