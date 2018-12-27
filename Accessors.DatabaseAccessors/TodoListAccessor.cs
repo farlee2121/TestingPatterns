@@ -1,9 +1,9 @@
-﻿using Shared.DatabaseContext;
+﻿using Microsoft.EntityFrameworkCore;
+using Shared.DatabaseContext;
 using Shared.DatabaseContext.DBOs;
 using Shared.DataContracts;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
