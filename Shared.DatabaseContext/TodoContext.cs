@@ -1,8 +1,7 @@
-﻿using Shared.DatabaseContext.DBOs;
+﻿using Microsoft.EntityFrameworkCore;
+using Shared.DatabaseContext.DBOs;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,31 +14,40 @@ namespace Shared.DatabaseContext
         public DbSet<TodoItemDTO> TodoItems { get; set; }
         public DbSet<TodoListDTO> TodoLists { get; set; }
 
-        public TodoContext() : base("TodoDb")
+        public TodoContext() : base()
         {
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //optionsBuilder.UseSqlServer(System.Configuration.ConfigurationManager.ConnectionStrings["TodoContext"].ConnectionString);
+            optionsBuilder.UseInMemoryDatabase();
+            base.OnConfiguring(optionsBuilder);
         }
 
         public override int SaveChanges()
         {
-            // collapse the entity validation errors into the exception message for convenience of debugging
-            try
-            {
-                return base.SaveChanges();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                var entityErrorList = ex.EntityValidationErrors
-                        .SelectMany(x => x.ValidationErrors)
-                        .Select(x => x.ErrorMessage);
+            return base.SaveChanges();
+        ////https://github.com/aspnet/EntityFrameworkCore/issues/4434
+        //    // collapse the entity validation errors into the exception message for convenience of debugging
+        //    try
+        //    {
+        //        return base.SaveChanges();
+        //    }
+        //    catch (DbEntityValidationException ex)
+        //    {
+        //        var entityErrorList = ex.EntityValidationErrors
+        //                .SelectMany(x => x.ValidationErrors)
+        //                .Select(x => x.ErrorMessage);
 
-                var entityErrorMessage = string.Join("; ", entityErrorList);
+        //        var entityErrorMessage = string.Join("; ", entityErrorList);
 
-                // combine entity errors with original exception
-                var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", entityErrorMessage);
+        //        // combine entity errors with original exception
+        //        var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", entityErrorMessage);
 
-                // re-throw the error with the new exception message
-                throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
-            }
+        //        // re-throw the error with the new exception message
+        //        throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
+        //    }
         }
     }
 }
