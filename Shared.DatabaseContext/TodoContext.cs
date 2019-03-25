@@ -21,7 +21,7 @@ namespace Shared.DatabaseContext
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer(System.Configuration.ConfigurationManager.ConnectionStrings["TodoContext"].ConnectionString);
-            optionsBuilder.UseInMemoryDatabase();
+            optionsBuilder.UseInMemoryDatabase(nameof(TodoContext));
             base.OnConfiguring(optionsBuilder);
         }
 
