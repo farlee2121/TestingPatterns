@@ -6,8 +6,6 @@ using DeepEqual.Syntax;
 using Managers.LazyCollectionOfAllManagers;
 using Ninject;
 using NUnit.Framework;
-using Shared.DatabaseContext;
-using Shared.DatabaseContext.DBOs;
 using Shared.DataContracts;
 using Shared.DependencyInjectionKernel;
 using Telerik.JustMock;
