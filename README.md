@@ -8,7 +8,7 @@ This project is to record and share patterns and libraries that make testing
 
 As a result, it also demonstrates many other patterns and libraries that enable good development practices. 
 
-Here is the presentation the triggered the project: https://1drv.ms/p/s!AjVvNQ4uturOdRxhCnyW16c_yk4
+Here is the presentation the triggered the project: https://20xtesting.slides.spencerfarley.com
 
 Here is a presentation that describes the design philosphies: https://1drv.ms/b/s!AjVvNQ4uturOby6OwKMFpMUlMqA
 
