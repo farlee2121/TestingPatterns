@@ -5,6 +5,7 @@ using NUnit.Framework.Internal.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,7 +32,7 @@ namespace Test.NUnitExtensions
             // This possibly implies that cases are built after the fixture methods run
             // https://groups.google.com/forum/#!topic/nunit-discuss/PT0NQaL7AMg
             NUnitTestFixtureBuilder b = new NUnitTestFixtureBuilder();
-            TestSuite testSuite = b.BuildFrom(typeInfo, this);
+            TestSuite testSuite = b.BuildFrom(typeInfo, new NoFilter());
             foreach (NUnit.Framework.Internal.Test t in testSuite.Tests)
             {
                 t.Name = $"{_prefix}_{t.Name}";
@@ -54,4 +55,18 @@ namespace Test.NUnitExtensions
     //        return testMethod;
     //    }
     //}
+
+    class NoFilter : IPreFilter
+    {
+        //ref: https://github.com/nunit/nunit/issues/3050
+        public bool IsMatch(Type type)
+        {
+            return true;
+        }
+
+        public bool IsMatch(Type type, MethodInfo method)
+        {
+            return true;
+        }
+    }
 }

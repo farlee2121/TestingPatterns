@@ -15,7 +15,7 @@ namespace Tests.ManagerTests
         public virtual void TestInitialize()
         {
             TodoContext database = new TodoContext();
-            database.Database.CreateIfNotExists();
+            database.Database.EnsureCreated();
             // transactionScope causes db changes to be rolled back at end of test
             _transactionScope = new TransactionScope();
 
