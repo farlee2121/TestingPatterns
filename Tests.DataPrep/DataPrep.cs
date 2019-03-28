@@ -31,5 +31,10 @@ namespace Tests.DataPrep
             TodoLists = new TodoListPrep(dataPersistance, Users);
             TodoItems = new TodoItemPrep(dataPersistance, TodoLists);
         }
+
+        public void EnsureDatastore()
+        {
+            dataPersistance.EnsureDatastore();
+        }
     }
 }
