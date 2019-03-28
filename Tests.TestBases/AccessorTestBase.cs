@@ -13,8 +13,7 @@ namespace Tests
         [SetUp]
         public virtual void TestInitialize()
         {
-            TodoContext database = new TodoContext();
-            database.Database.EnsureCreated();
+            dataPrep.EnsureDatastore();
             // transactionScope causes db changes to be rolled back at end of test
             _transactionScope = new TransactionScope();
 
