@@ -10,9 +10,9 @@ namespace Managers.LazyCollectionOfAllManagers
 {
     public interface ITodoCRUDManager
     {
-        TodoList GetTodoList(Guid id);
+        TodoList GetTodoList(Id id);
 
-        IEnumerable<TodoItem> GetTodoItems(Guid listId);
+        IEnumerable<TodoItem> GetTodoItems(Id listId);
 
         SaveResult<TodoItem> SaveTodoItem(TodoItem todoItem);
 
@@ -34,12 +34,12 @@ namespace Managers.LazyCollectionOfAllManagers
         // for this 'flow' in the application
         //
 
-        public IEnumerable<TodoItem> GetTodoItems(Guid listId)
+        public IEnumerable<TodoItem> GetTodoItems(Id listId)
         {
             return todoItemAccessor.GetTodoItemsForList(listId);
         }
 
-        public TodoList GetTodoList(Guid id)
+        public TodoList GetTodoList(Id id)
         {
             return todoListAccessor.GetTodoList(id);
         }

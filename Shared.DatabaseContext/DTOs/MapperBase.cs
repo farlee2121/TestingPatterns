@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Shared.DataContracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace Shared.DatabaseContext.DBOs
             {
                 cfg.CreateMap<ContractType, ModelType>();
                 cfg.CreateMap<ModelType, ContractType>();
+                cfg.CreateMap<Guid, Id>().ConvertUsing((guid) => (Id)guid);
+                cfg.CreateMap<Id, Guid>().ConvertUsing((id) => (Guid)id);
             });
             
             map = config.CreateMapper();
