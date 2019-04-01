@@ -92,7 +92,7 @@ namespace Tests.AccessorTests
             IEnumerable<TodoItem> actualItemList = accessor.GetTodoItemsForList(todoList.Id);
 
             //assert
-            expectedItemList.WithDeepEqual(actualItemList);
+            expectedItemList.WithDeepEqual(actualItemList).Assert();
         }
 
         [Test]
