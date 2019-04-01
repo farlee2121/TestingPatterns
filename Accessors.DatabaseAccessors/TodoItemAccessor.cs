@@ -54,7 +54,7 @@ namespace Accessors.DatabaseAccessors
             {
                 TodoItemDTO dbModel = mapper.ContractToModel(todoItem);
 
-                if(todoItem.Id == Id.Default)
+                if(todoItem.Id.IsDefault())
                 {
                     db.TodoItems.Add(dbModel);
                 }

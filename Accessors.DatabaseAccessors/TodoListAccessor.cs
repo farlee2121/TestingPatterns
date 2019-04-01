@@ -71,7 +71,7 @@ namespace Accessors.DatabaseAccessors
             {
                 TodoListDTO dbModel = mapper.ContractToModel(todoList);
 
-                if (todoList.Id == Id.Default)
+                if (todoList.Id.IsDefault())
                 {
                     db.TodoLists.Add(dbModel);
                 }
