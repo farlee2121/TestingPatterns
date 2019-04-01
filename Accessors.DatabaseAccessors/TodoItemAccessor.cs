@@ -12,17 +12,17 @@ namespace Accessors.DatabaseAccessors
 {
     public interface ITodoItemAccessor
     {
-        IEnumerable<TodoItem> GetTodoItemsForList(Guid listId);
+        IEnumerable<TodoItem> GetTodoItemsForList(Id listId);
 
         SaveResult<TodoItem> SaveTodoItem(TodoItem todoItem);
 
-        DeleteResult DeleteTodoItem(Guid id);
+        DeleteResult DeleteTodoItem(Id id);
     }
     class TodoItemAccessor : ITodoItemAccessor
     {
         TodoItem_Mapper mapper = new TodoItem_Mapper();
 
-        public DeleteResult DeleteTodoItem(Guid id)
+        public DeleteResult DeleteTodoItem(Id id)
         {
             using (TodoContext db = new TodoContext())
             {
@@ -37,7 +37,7 @@ namespace Accessors.DatabaseAccessors
             }
         }
 
-        public IEnumerable<TodoItem> GetTodoItemsForList(Guid listId)
+        public IEnumerable<TodoItem> GetTodoItemsForList(Id listId)
         {
             IEnumerable<TodoItem> todoItemList;
             using (TodoContext db = new TodoContext())
@@ -54,7 +54,7 @@ namespace Accessors.DatabaseAccessors
             {
                 TodoItemDTO dbModel = mapper.ContractToModel(todoItem);
 
-                if(todoItem.Id == DataConstants.DefaultId)
+                if(todoItem.Id == Id.Default)
                 {
                     db.TodoItems.Add(dbModel);
                 }

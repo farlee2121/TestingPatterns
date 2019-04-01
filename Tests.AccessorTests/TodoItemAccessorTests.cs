@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Accessors.DatabaseAccessors;
+using DeepEqual;
 using DeepEqual.Syntax;
 using NUnit.Framework;
 using Shared.DatabaseContext;
@@ -59,14 +60,14 @@ namespace Tests.AccessorTests
                 db.SaveChanges();
 
                 // act
-                IEnumerable<TodoItem> actualItemList = accessor.GetTodoItemsForList(expectedList.Id);
+                IEnumerable<TodoItem> actualItemList = accessor.GetTodoItemsForList(new Id(expectedList.Id));
 
                 //assert
                 Assert.AreEqual(expectedItemList.Count, actualItemList.Count());
                 foreach (TodoItem actualTodo in actualItemList)
                 {
                     TodoItemDTO expectedTodo = expectedItemList.FirstOrDefault(ti => ti.Id == actualTodo.Id);
-                    Assert.AreEqual(expectedTodo.TodoListId, actualTodo.TodoListId);
+                    Assert.AreEqual((Id)expectedTodo.TodoListId, actualTodo.TodoListId);
                     Assert.AreEqual(expectedTodo.Description, actualTodo.Description);
                     Assert.AreEqual(expectedTodo.IsComplete, actualTodo.IsComplete);
                 }
@@ -91,7 +92,7 @@ namespace Tests.AccessorTests
             IEnumerable<TodoItem> actualItemList = accessor.GetTodoItemsForList(todoList.Id);
 
             //assert
-            expectedItemList.ShouldDeepEqual(actualItemList);
+            expectedItemList.WithDeepEqual(actualItemList);
         }
 
         [Test]
