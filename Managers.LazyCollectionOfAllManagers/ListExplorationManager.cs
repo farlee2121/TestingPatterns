@@ -9,9 +9,9 @@ namespace Managers.LazyCollectionOfAllManagers
 {
     public interface IListExplorationManager
     {
-        UserAccountStats GetUserStats(Guid userId);
+        UserAccountStats GetUserStats(Id userId);
 
-        IEnumerable<TodoList> GetUserLists(Guid userId);
+        IEnumerable<TodoList> GetUserLists(Id userId);
        
     }
 
@@ -20,12 +20,12 @@ namespace Managers.LazyCollectionOfAllManagers
     internal class ListExplorationManager : IListExplorationManager
     {
 
-        public IEnumerable<TodoList> GetUserLists(Guid userId)
+        public IEnumerable<TodoList> GetUserLists(Id userId)
         {
             throw new NotImplementedException();
         }
 
-        public UserAccountStats GetUserStats(Guid userId)
+        public UserAccountStats GetUserStats(Id userId)
         {
             throw new NotImplementedException();
         }

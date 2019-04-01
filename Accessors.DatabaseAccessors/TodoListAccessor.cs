@@ -12,20 +12,20 @@ namespace Accessors.DatabaseAccessors
 {
     public interface ITodoListAccessor
     {
-        TodoList GetTodoList(Guid id);
+        TodoList GetTodoList(Id id);
 
-        IEnumerable<TodoList> GetTodoListsForUser(Guid userId);
+        IEnumerable<TodoList> GetTodoListsForUser(Id userId);
 
         SaveResult<TodoList> SaveTodoList(TodoList todoList);
 
-        DeleteResult DeleteTodoList(Guid id);
+        DeleteResult DeleteTodoList(Id id);
     }
 
     class TodoListAccessor : ITodoListAccessor
     {
         TodoList_Mapper mapper = new TodoList_Mapper();
 
-        public DeleteResult DeleteTodoList(Guid id)
+        public DeleteResult DeleteTodoList(Id id)
         {
             using (TodoContext db = new TodoContext())
             {
@@ -40,7 +40,7 @@ namespace Accessors.DatabaseAccessors
             }
         }
 
-        public TodoList GetTodoList(Guid id)
+        public TodoList GetTodoList(Id id)
         {
             using (TodoContext db = new TodoContext())
             {
@@ -52,7 +52,7 @@ namespace Accessors.DatabaseAccessors
             }
         }
 
-        public IEnumerable<TodoList> GetTodoListsForUser(Guid userId)
+        public IEnumerable<TodoList> GetTodoListsForUser(Id userId)
         {
             IEnumerable<TodoList> todoListContracts;
             using (TodoContext db = new TodoContext())
@@ -71,7 +71,7 @@ namespace Accessors.DatabaseAccessors
             {
                 TodoListDTO dbModel = mapper.ContractToModel(todoList);
 
-                if (todoList.Id == DataConstants.DefaultId)
+                if (todoList.Id.IsDefault())
                 {
                     db.TodoLists.Add(dbModel);
                 }
