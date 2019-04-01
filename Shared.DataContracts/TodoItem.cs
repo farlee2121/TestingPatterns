@@ -4,9 +4,9 @@ namespace Shared.DataContracts
 {
     public class TodoItem
     {
-        public Guid Id { get; set; }
+        public Id Id { get; set; }
 
-        public Guid TodoListId { get; set; }
+        public Id TodoListId { get; set; }
 
         public string Description { get; set; }
 
