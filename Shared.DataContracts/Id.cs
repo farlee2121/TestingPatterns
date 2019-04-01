@@ -4,24 +4,30 @@ using System.Text;
 
 namespace Shared.DataContracts
 {
-    public struct Id : IComparable, IComparable<Id>, IEquatable<Id>, IFormattable
+    public struct Id : IComparable, IComparable<Id>, IEquatable<Id>
     {
-        // this would also work genericly
-        // https://stackoverflow.com/questions/5377237/strongly-typing-id-values-in-c-sharp
         private readonly Guid _guid;
-        private static readonly Guid _default = Guid.Empty;
+        private static readonly Guid _default = default(Guid);
 
         public Id(Guid? guid)
         {
-            _guid = guid ?? Guid.Empty;
+            _guid = guid ?? _default;
         }
 
-        public static readonly Id Default = new Id(Guid.Empty);
+        public bool IsDefault()
+        {
+            return this._guid.Equals(_default);
+        }
+
+        public static Id Default()
+        { 
+            return new Id(_default);
+        }
 
         public static Id New()
         {
             return new Id(Guid.NewGuid());
-        } 
+        }
 
         public static explicit operator Id(Guid guid)
         {
@@ -40,7 +46,7 @@ namespace Shared.DataContracts
 
         public int CompareTo(object obj)
         {
-            if(obj is Id)
+            if (obj is Id)
             {
                 return this.CompareTo((Id)obj);
             }
@@ -63,10 +69,6 @@ namespace Shared.DataContracts
         public override string ToString()
         {
             return _guid.ToString();
-        }
-        public string ToString(string format, IFormatProvider formatProvider)
-        {
-            return _guid.ToString(format, formatProvider);
         }
 
         public override int GetHashCode()
