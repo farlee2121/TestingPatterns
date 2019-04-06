@@ -17,6 +17,10 @@ steps:
   displayName: Restore nuget
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
-- script: dotnet test
+- task: DotNetCoreCLI@2
+  inputs:
+    command: test
+    projects: '**/Tests.*/*.csproj'
+    arguments: '--configuration $(buildConfiguration) --collect "Code coverage"' 
   displayName: Unit Tests
   
