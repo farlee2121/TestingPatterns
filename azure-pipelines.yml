@@ -13,5 +13,10 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- script: dotnet restore
+  displayName: Restore nuget
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+- script: dotnet tests
+  displayName: Unit Tests
+  
