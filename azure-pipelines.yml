@@ -17,6 +17,6 @@ steps:
   displayName: Restore nuget
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
-- script: dotnet tests
+- script: dotnet test
   displayName: Unit Tests
   
