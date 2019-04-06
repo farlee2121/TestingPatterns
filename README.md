@@ -32,3 +32,5 @@ Testing Libraries
 - .NET Transactions TransactionScope
 - NUnit
   - alternatives: MSTest
+
+Example Build Pipeline: https://spencerfarley.visualstudio.com/TestingPatterns/
