@@ -15,6 +15,15 @@ variables:
 steps:
 - script: dotnet restore
   displayName: Restore nuget
+- task: SonarCloudPrepare@1
+  displayName: Prepare Sonar
+  inputs:
+    SonarCloud: '088aa95d-b2a2-4d2e-907c-ac5b8549dd80'
+    organization: 'farlee2121-github'
+    projectKey: 'farlee2121_TestingPatterns'
+    projectName: 'TestingPatterns'
+- task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
+  displayName: Run Sonar
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 - task: DotNetCoreCLI@2
@@ -23,4 +32,5 @@ steps:
     projects: '**/Tests.*/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"' 
   displayName: Unit Tests
+- task: SonarCloudPublish@1
   
