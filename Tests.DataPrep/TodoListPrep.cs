@@ -16,7 +16,7 @@ namespace Tests.DataPrep
             this.userPrep = userPrep;
         }
 
-        public TodoList Create(User user = null)
+        public TodoList Create(User user = null, bool isPersisted = true)
         {
             User sanitizedUser = user ?? userPrep.Create();
             TodoList todoList = new TodoList()
@@ -25,9 +25,16 @@ namespace Tests.DataPrep
                 Title = random.Lorem.Sentence(),
             };
 
-            TodoList savedList = Create(todoList);
+            if (isPersisted)
+            {
+                TodoList savedList = base.Create(todoList);
+                return savedList;
+            }
+            else
+            {
+                return todoList;
+            }
 
-            return savedList;
         }
 
         public IEnumerable<TodoList> CreateManyForUser(int count, User user)
