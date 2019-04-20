@@ -8,16 +8,12 @@ using System.Threading.Tasks;
 
 namespace Tests.DataPrep
 {
-    public class TodoItemPrep
+    public class TodoItemPrep : TypePrepBase<TodoItem, TodoItemDTO>
     {
-        ITestDataAccessor dataAccessor;
         TodoListPrep todoListPrep;
 
-        Bogus.Faker random = new Bogus.Faker();
-
-        public TodoItemPrep(ITestDataAccessor dataAccessor, TodoListPrep todoListPrep)
+        public TodoItemPrep(ITestDataAccessor dataAccessor, TodoListPrep todoListPrep) : base (dataAccessor)
         {
-            this.dataAccessor = dataAccessor;
             this.todoListPrep = todoListPrep;
         }
 
@@ -37,18 +33,6 @@ namespace Tests.DataPrep
             return savedItem;
         }
 
-        public TodoItem Create(TodoItem todoItem, bool isActive = true)
-        {
-            TodoItem_Mapper mapper = new TodoItem_Mapper();
-            TodoItemDTO model = mapper.ContractToModel(todoItem);
-            // handle active state here so I can create inactive items, but leave active flags off of data contracts
-            model.IsActive = isActive;
-
-            TodoItemDTO savedModel = dataAccessor.Create(model);
-            TodoItem savedContract = mapper.ModelToContract(savedModel);
-
-            return savedContract;
-        }
 
         public IEnumerable<TodoItem> CreateManyForList(int count, TodoList todoList)
         {

@@ -9,39 +9,10 @@ using System.Threading.Tasks;
 namespace Tests.DataPrep
 {
 
-    public class UserPrep
+    public class UserPrep : TypePrepBase<User, UserDTO>
     {
-        Bogus.Faker random = new Bogus.Faker();
-
-        ITestDataAccessor dataAccessor;
-        public UserPrep(ITestDataAccessor dataAccessor)
+        public UserPrep(ITestDataAccessor dataAccessor) : base(dataAccessor)
         {
-            this.dataAccessor = dataAccessor;
         }
-
-        public User Create()
-        {
-            User user = new User()
-            {
-                Name = random.Name.FullName(),
-            };
-            User savedUser = Create(user);
-
-            return savedUser;
-        }
-
-        public User Create(User user, bool isActive = true)
-        {
-            // NOTE/TODO: feels like there should be a good way to encapsulate this so most data prep classes don't have to write it
-            User_Mapper mapper = new User_Mapper();
-            UserDTO model = mapper.ContractToModel(user);
-            model.IsActive = isActive;
-
-            UserDTO savedModel = dataAccessor.Create(model);
-            User savedContract = mapper.ModelToContract(savedModel);
-
-            return savedContract;
-        }
-
     }
 }
