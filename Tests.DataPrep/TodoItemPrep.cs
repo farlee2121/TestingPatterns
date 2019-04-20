@@ -17,7 +17,7 @@ namespace Tests.DataPrep
             this.todoListPrep = todoListPrep;
         }
 
-        public TodoItem Create(TodoList todoList = null, bool? isComplete = null)
+        public TodoItem Create(TodoList todoList = null, bool? isComplete = null, bool isPersisted = true)
         {
 
             TodoList sanitizedTodoList = todoList ?? todoListPrep.Create();
@@ -28,9 +28,15 @@ namespace Tests.DataPrep
                 IsComplete = isComplete ?? random.PickRandom(true, false),
             };
 
-            TodoItem savedItem = Create(todoItem);
-
-            return savedItem;
+            if (isPersisted)
+            {
+                TodoItem savedItem = Create(todoItem);
+                return savedItem;
+            }
+            else
+            {
+                return todoItem;
+            }
         }
 
 
