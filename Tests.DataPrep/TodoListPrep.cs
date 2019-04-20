@@ -8,15 +8,11 @@ using System.Threading.Tasks;
 
 namespace Tests.DataPrep
 {
-    public class TodoListPrep
+    public class TodoListPrep : TypePrepBase<TodoList, TodoListDTO>
     {
-        Bogus.Faker random = new Bogus.Faker();
-
-        ITestDataAccessor dataAccessor;
         UserPrep userPrep;
-        public TodoListPrep(ITestDataAccessor dataAccessor, UserPrep userPrep)
+        public TodoListPrep(ITestDataAccessor dataAccessor, UserPrep userPrep) : base(dataAccessor)
         {
-            this.dataAccessor = dataAccessor;
             this.userPrep = userPrep;
         }
 
@@ -32,18 +28,6 @@ namespace Tests.DataPrep
             TodoList savedList = Create(todoList);
 
             return savedList;
-        }
-
-        public TodoList Create(TodoList todoList, bool isActive = true)
-        {
-            TodoList_Mapper mapper = new TodoList_Mapper();
-            TodoListDTO model = mapper.ContractToModel(todoList);
-            model.IsActive = isActive;
-
-            TodoListDTO savedModel = dataAccessor.Create(model);
-            TodoList savedContract = mapper.ModelToContract(savedModel);
-
-            return savedContract;
         }
 
         public IEnumerable<TodoList> CreateManyForUser(int count, User user)
