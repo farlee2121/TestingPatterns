@@ -56,11 +56,7 @@ namespace Tests.AccessorTests
         public void SaveTodoList_Create()
         {
             User user = dataPrep.Users.Create();
-            TodoList newTodoList = new TodoList()
-            {
-                UserId = user.Id,
-                Title = Guid.NewGuid().ToString(),
-            };
+            TodoList newTodoList = dataPrep.TodoLists.Create(isPersisted: false);
 
             SaveResult<TodoList> saveResult = accessor.SaveTodoList(newTodoList);
             TodoList actualTodoList = saveResult.Result;
