@@ -115,13 +115,7 @@ namespace Tests.AccessorTests
         public void SaveTodoItem_Create()
         {
             // arrange
-            TodoList parentList = dataPrep.TodoLists.Create();
-            TodoItem expectedTodoItem = new TodoItem()
-            {
-                TodoListId = parentList.Id,
-                Description = Guid.NewGuid().ToString(),
-                IsComplete = false,
-            };
+            TodoItem expectedTodoItem = dataPrep.TodoItems.Create(isPersisted: false);
 
             // act
             SaveResult<TodoItem> saveResult = accessor.SaveTodoItem(expectedTodoItem);
