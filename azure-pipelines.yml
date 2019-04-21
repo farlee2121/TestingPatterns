@@ -22,8 +22,11 @@ steps:
     organization: 'farlee2121-github'
     projectKey: 'farlee2121_TestingPatterns'
     projectName: 'TestingPatterns'
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+- task: VSBuild@1
+  displayName: 'Build solution **/*.sln'
+  inputs:
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
+    configuration: '$(BuildConfiguration)'
 - task: DotNetCoreCLI@2
   inputs:
     command: test
