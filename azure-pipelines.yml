@@ -32,7 +32,7 @@ steps:
   inputs:
     command: test
     projects: '**/Tests.*/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --collect "Code coverage"' 
+    arguments: '--configuration $(buildConfiguration) --no-build --collect "Code coverage"' 
   displayName: Unit Tests
 - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
   displayName: Run Sonar
