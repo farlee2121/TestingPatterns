@@ -13,6 +13,12 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- script: |
+    git fetch --all
+    git branch -D master
+    git rev-parse origin/master
+  displayName: Branch shenannigans for sonar
+  #https://community.sonarsource.com/t/pr-analysis-shows-no-code-on-one-specific-long-lived-branch/4172/6
 - script: dotnet restore
   displayName: Restore nuget
 - task: SonarCloudPrepare@1
@@ -28,14 +34,15 @@ steps:
     solution: '**/*.sln'
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
     configuration: '$(BuildConfiguration)'
-- task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
-  displayName: Run Sonar
-- task: SonarCloudPublish@1
 - task: DotNetCoreCLI@2
   inputs:
     command: test
     projects: '**/Tests.*/*.csproj'
     arguments: '--configuration $(buildConfiguration) --no-build --collect "Code coverage"' 
   displayName: Unit Tests
+- task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
+  displayName: Run Sonar
+- task: SonarCloudPublish@1
+
 
   
