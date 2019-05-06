@@ -1,0 +1,3 @@
+[submodule "wiki"]
+	path = wiki
+	url = https://github.com/farlee2121/TestingPatterns.wiki.git/

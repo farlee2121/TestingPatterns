@@ -10,7 +10,7 @@ As a result, it also demonstrates many other patterns and libraries that enable 
 
 Here is the presentation the triggered the project: https://20xtesting.slides.spencerfarley.com
 
-Here is a presentation that describes the design philosphies: https://1drv.ms/b/s!AjVvNQ4uturOby6OwKMFpMUlMqA
+Here is a presentation that describes the design philosophies: https://1drv.ms/b/s!AjVvNQ4uturOby6OwKMFpMUlMqA
 
 This project is very much overkill for a Todo list. However, the overkill is to demonstrate the patterns in a way that can easily be transfered to a large project
 
