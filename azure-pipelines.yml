@@ -23,4 +23,8 @@ steps:
     projects: '**/Tests.*/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"' 
   displayName: Unit Tests
+- task: codecoveragecomparerbt@1
+  displayName: 
+  inputs:
+    codecoveragemeasurementmethod: 'Lines'
   
