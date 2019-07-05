@@ -71,15 +71,7 @@ namespace Accessors.DatabaseAccessors
             {
                 TodoListDTO dbModel = mapper.ContractToModel(todoList);
 
-                if (todoList.Id.IsDefault())
-                {
-                    db.TodoLists.Add(dbModel);
-                }
-                else
-                {
-                    db.TodoLists.Attach(dbModel);
-                    db.Entry(dbModel).State = EntityState.Modified;
-                }
+                db.AddOrUpdate(dbModel);
                 db.SaveChanges();
 
                 TodoList savedTodoItem = mapper.ModelToContract(dbModel);
