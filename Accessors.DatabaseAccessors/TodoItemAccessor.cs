@@ -54,15 +54,7 @@ namespace Accessors.DatabaseAccessors
             {
                 TodoItemDTO dbModel = mapper.ContractToModel(todoItem);
 
-                if(todoItem.Id.IsDefault())
-                {
-                    db.TodoItems.Add(dbModel);
-                }
-                else
-                {
-                    db.TodoItems.Attach(dbModel);
-                    db.Entry(dbModel).State = EntityState.Modified;
-                }
+                db.AddOrUpdate(dbModel);
                 db.SaveChanges();
 
                 TodoItem savedTodoItem = mapper.ModelToContract(dbModel);

@@ -49,5 +49,28 @@ namespace Shared.DatabaseContext
         //        throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
         //    }
         }
+
+        /// <summary>
+        /// If the id is default adds a new entity
+        /// If the id is anything else, attaches and marks as modified
+        /// Does not commit changes. You must call db.SaveChanges
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public T AddOrUpdate<T>(T entity) where T : class, DatabaseObjectBase
+        {
+            if (Shared.DataContracts.Id.Default() == entity.Id)
+            {
+                this.Set<T>().Add(entity);
+            }
+            else
+            {
+                this.Set<T>().Attach(entity);
+                this.Entry(entity).State = EntityState.Modified;
+            }
+
+            return entity;
+        }
     }
 }
